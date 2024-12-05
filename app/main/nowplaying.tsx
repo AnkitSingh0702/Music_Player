@@ -73,7 +73,7 @@ const NowPlaying: React.FC<NowPlayingProps> = ({
   };
 
   return (
-    <div className="rounded-lg bg-black/20 p-4">
+    <div className="rounded-lg bg-zinc-950 p-4">
       <div className="aspect-square overflow-hidden rounded-lg">
         <img
           src={currentSong.cover}
@@ -82,7 +82,7 @@ const NowPlaying: React.FC<NowPlayingProps> = ({
         />
       </div>
       <div className="mt-4">
-        <h3 className="text-lg font-semibold">{currentSong.title}</h3>
+        <h3 className="text-lg font-semibold text-white">{currentSong.title}</h3>
         <p className="text-sm text-white/60">{currentSong.artist}</p>
       </div>
       <div className="mt-4">

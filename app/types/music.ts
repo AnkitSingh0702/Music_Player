@@ -1,8 +1,21 @@
-export type Song = {
+// types.ts
+
+export interface SongBase {
   id: string;
   title: string;
-  artist: string;
   duration: string;
+}
+
+export interface CentralSong extends SongBase {
+  artist: string;
   cover: string;
-  file: string; // Path to the song audio file
-};
+  file: string;
+}
+
+export interface TableDemoSong extends SongBase {
+  number: string;
+  plays: string;
+  album: string;
+  image: string;
+  isPlaying?: boolean;
+}

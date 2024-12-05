@@ -84,24 +84,20 @@ export function AppSidebar() {
                 </div>
               </SidebarMenuButton>
 
-              <div>
-                
-              </div>
+              <div></div>
 
               {/* Log Out */}
               <div className="flex justify-between items-center">
-              <SidebarMenuButton>
-                <div className="flex items-center gap-3">
-                  <LogOut size={24} className="text-red-600" />
-                  <span className="text-base font-medium">Log Out</span>
+                <SidebarMenuButton>
+                  <div className="flex items-center gap-3">
+                    <LogOut size={24} className="text-red-600" />
+                    <span className="text-base font-medium">Log Out</span>
+                  </div>
+                </SidebarMenuButton>
+                <div className="px-2">
+                  <ModeToggle />
                 </div>
-              </SidebarMenuButton>
-              <div className="px-2">
-              <ModeToggle/>
               </div>
-              
-              </div>
-              
             </div>
           </SidebarMenuItem>
         </SidebarMenu>

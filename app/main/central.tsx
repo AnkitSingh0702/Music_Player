@@ -6,18 +6,9 @@ import { Input } from "@/components/ui/input";
 import { TableDemo } from './tabledemo';
 import NowPlaying from './nowplaying';
 import React, { useState, useRef, useCallback, useEffect } from 'react';
+import { CentralSong, TableDemoSong } from '../types/music';
 
-type Song = {
-  id: string;
-  title: string;
-  artist: string;
-  duration: string;
-  cover: string;
-  file: string;
-};
-
-// Example songs array with audio file paths
-const songs: Song[] = [
+const songs: CentralSong[] = [
   {
     id: "1",
     title: "Legends Never Die",
@@ -62,8 +53,9 @@ const songs: Song[] = [
 
 export default function Central() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [currentSong, setCurrentSong] = useState<Song | null>(null);
+  const [currentSong, setCurrentSong] = useState<CentralSong | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [progress, setProgress] = useState(0);
 
   const handlePlayPause = useCallback(
@@ -79,6 +71,7 @@ export default function Central() {
           }
           setCurrentSong(selectedSong);
           setProgress(0);
+
           const audio = new Audio(selectedSong.file);
           audioRef.current = audio;
 
@@ -139,13 +132,12 @@ export default function Central() {
   }, []);
 
   return (
-    <div className=''>
-    <div className="flex flex-col h-full w-full">
+    <div className="flex flex-col h-screen w-full">
       {/* Navigation */}
       <nav className="flex items-center justify-between px-6 py-4 ">
         <div className="flex items-center gap-4">
           {['Music', 'Podcast', 'Live', 'Radio'].map((item) => (
-            <Button key={item} variant="ghost" className=" hover:text-gray-400">
+            <Button key={item} variant="ghost" className="hover:text-gray-400">
               {item}
             </Button>
           ))}
@@ -154,36 +146,29 @@ export default function Central() {
           <Search className="absolute left-2 top-2.5 h-4 w-4 text-gray-400" />
           <Input
             placeholder="Search for songs..."
-            className="w-64 bg-gray-800 pl-8  placeholder-gray-400 focus-visible:ring-0"
+            className="w-64  pl-8 placeholder-gray-400 focus-visible:ring-0"
           />
         </div>
       </nav>
 
       {/* Hero Section */}
-      <div className="relative h-60 bg-gradient-to-b from-purple-800 to-black">
-        {/* <img
-          src="/placeholder.svg"
-          alt="Music visualizer"
-          className="absolute inset-0 h-full w-full object-cover opacity-60"
-        /> */}
-        <div className="relative z-10 flex h-full items-center justify-center">
-          <h1 className="text-4xl font-bold text-white">Discover Great Music</h1>
-        </div>
+      <div className="relative h-[400px] bg-gradient-to-b from-purple-800 to-black flex items-center justify-center">
+        <h1 className="text-4xl font-bold text-white">Discover Great Music</h1>
       </div>
 
       {/* Content Section */}
       <div className="flex flex-1 gap-8 px-6 py-6">
         {/* Song List */}
-        <div className="flex-1 ">
+        <div className="flex-1">
           <TableDemo
             onPlayPause={handlePlayPause}
-            currentSong={currentSong}
+            currentSong={currentSong as TableDemoSong | null} // Type assertion
             isPlaying={isPlaying}
           />
         </div>
 
         {/* Now Playing */}
-        <div className="w-80 bg-gray-900 rounded-lg p-4">
+        <div className="w-80 bg-zinc-900 rounded-lg p-4">
           <NowPlaying
             currentSong={currentSong}
             isPlaying={isPlaying}
@@ -195,7 +180,6 @@ export default function Central() {
           />
         </div>
       </div>
-    </div>
     </div>
   );
 }
