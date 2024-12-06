@@ -1,9 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Music Player
 
-## Getting Started
+A modern, responsive music player built with React.js and Next.js. This application provides a sleek interface for browsing and playing music, with features like playlist management and real-time playback controls.
 
-First, run the development server:
+## Demo
+<img src="gif/music.gif" />
 
+## Features
+
+- 🎵 Play, pause, skip, and control music playback
+- 📊 Display song information including title, artist, and album
+- 🖼️ Show album artwork for each track
+- 📱 Responsive design for various screen sizes
+- 🎨 Sleek, dark-themed UI inspired by popular music streaming services
+- 📜 Playlist management with drag-and-drop reordering (coming soon)
+- 
+## Installation
+
+If you wish to build the project locally and see what my website looks like, you can run the following command to first get my project on your system:
+
+```bash
+git clone https://github.com/AnkitSingh0702/Music_Player
+
+cd Cosmic_Cubes
+```
+Install the dependencies:
+
+```bash
+npm install
+```
+start the development server:
 ```bash
 npm run dev
 # or
