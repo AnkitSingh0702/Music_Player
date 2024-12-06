@@ -133,53 +133,60 @@ export default function Central() {
 
   return (
     <div className="flex flex-col h-screen w-full">
-      {/* Navigation */}
-      <nav className="flex items-center justify-between px-6 py-4 ">
-        <div className="flex items-center gap-4">
-          {['Music', 'Podcast', 'Live', 'Radio'].map((item) => (
-            <Button key={item} variant="ghost" className="hover:text-gray-400">
-              {item}
-            </Button>
-          ))}
-        </div>
-        <div className="relative">
-          <Search className="absolute left-2 top-2.5 h-4 w-4 text-gray-400" />
-          <Input
-            placeholder="Search for songs..."
-            className="w-64  pl-8 placeholder-gray-400 focus-visible:ring-0"
-          />
-        </div>
-      </nav>
-
-      {/* Hero Section */}
-      <div className="relative h-[400px] bg-gradient-to-b from-purple-800 to-black flex items-center justify-center">
-        <h1 className="text-4xl font-bold text-white">Discover Great Music</h1>
+    {/* Navigation */}
+    <nav className="flex flex-wrap items-center justify-between px-4 py-4 gap-4 sm:px-6 sm:py-6">
+      <div className="flex flex-wrap items-center gap-4">
+        {['Music', 'Podcast', 'Live', 'Radio'].map((item) => (
+          <Button
+            key={item}
+            variant="ghost"
+            className="text-sm sm:text-base hover:text-gray-400"
+          >
+            {item}
+          </Button>
+        ))}
       </div>
-
-      {/* Content Section */}
-      <div className="flex flex-1 gap-8 px-6 py-6">
-        {/* Song List */}
-        <div className="flex-1">
-          <TableDemo
-            onPlayPause={handlePlayPause}
-            currentSong={currentSong as TableDemoSong | null} // Type assertion
-            isPlaying={isPlaying}
-          />
-        </div>
-
-        {/* Now Playing */}
-        <div className="w-80 bg-zinc-900 rounded-lg p-4">
-          <NowPlaying
-            currentSong={currentSong}
-            isPlaying={isPlaying}
-            onTogglePlayPause={handleTogglePlayPause}
-            onNext={handleNextSong}
-            onPrevious={handlePreviousSong}
-            getCurrentTime={() => audioRef.current?.currentTime || 0}
-            seek={seek}
-          />
-        </div>
+      <div className="relative w-full max-w-xs">
+        <Search className="absolute left-2 top-2.5 h-4 w-4 text-gray-400" />
+        <Input
+          placeholder="Search for songs..."
+          className="w-full pl-8 placeholder-gray-400 focus-visible:ring-0"
+        />
+      </div>
+    </nav>
+  
+    {/* Hero Section */}
+    <div className="relative h-[200px] sm:h-[300px] md:h-[400px] bg-gradient-to-b from-purple-800 to-black flex items-center justify-center">
+      <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-white text-center px-4">
+        Discover Great Music
+      </h1>
+    </div>
+  
+    {/* Content Section */}
+    <div className="flex flex-col md:flex-row flex-1 gap-4 sm:gap-6 px-4 py-4 sm:px-6 sm:py-6">
+      {/* Song List */}
+      <div className="flex-1">
+        <TableDemo
+          onPlayPause={handlePlayPause}
+          currentSong={currentSong as TableDemoSong | null} // Type assertion
+          isPlaying={isPlaying}
+        />
+      </div>
+  
+      {/* Now Playing */}
+      <div className="w-full md:w-80 bg-zinc-900 rounded-lg p-4">
+        <NowPlaying
+          currentSong={currentSong}
+          isPlaying={isPlaying}
+          onTogglePlayPause={handleTogglePlayPause}
+          onNext={handleNextSong}
+          onPrevious={handlePreviousSong}
+          getCurrentTime={() => audioRef.current?.currentTime || 0}
+          seek={seek}
+        />
       </div>
     </div>
+  </div>
+  
   );
 }
