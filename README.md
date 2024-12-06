@@ -13,7 +13,7 @@ A modern, responsive music player built with React.js and Next.js. This applicat
 - 📱 Responsive design for various screen sizes
 - 🎨 Sleek, dark-themed UI inspired by popular music streaming services
 - 📜 Playlist management with drag-and-drop reordering (coming soon)
-- 
+  
 ## Installation
 
 If you wish to build the project locally and see what my website looks like, you can run the following command to first get my project on your system:
